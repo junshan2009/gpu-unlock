@@ -80,7 +80,15 @@ else
 	log=$(dmesg 2>/dev/null | grep gpu_unlock || true)
 fi
 unlocked=$(printf '%s\n' "$log" | grep -c 'gpu_unlock: unlocked$')
-failed=$(printf '%s\n' "$log" | grep -c 'gpu_unlock: .*failed')
+# The module's own failures all carry an errno in parentheses. The kernel's
+# "module verification failed: signature and/or required key missing" notice
+# is about the missing signature of an out-of-tree module, not about the
+# unlock, and is expected wherever Secure Boot is off.
+failed=$(printf '%s\n' "$log" | grep -c 'gpu_unlock: .*failed (')
+if printf '%s\n' "$log" | grep -q 'module verification failed'; then
+	note "note: the kernel's unsigned-module verification notice is present;"
+	note "with Secure Boot off it only taints the kernel, the module loads"
+fi
 if [ "$unlocked" -gt 0 ] && [ "$failed" -eq 0 ]; then
 	ok "$unlocked card(s) unlocked at boot, no failures"
 elif [ "$failed" -gt 0 ]; then
