@@ -1,0 +1,32 @@
+=== gpu-unlock offline environment report ===
+GENERATED=2026-11-04T07:02:50Z
+REPORT_FORMAT=1
+
+=== distribution ===
+DISTRO_ID=ubuntu
+DISTRO_ID_LIKE=debian
+DISTRO_CODENAME=resolute
+DISTRO_VERSION=26.04
+DISTRO_NAME=Ubuntu 26.04 LTS
+DPKG_ARCH=amd64
+KERNEL=7.0.0-31-generic
+KERNEL_ABI=7.0.0-31
+KERNEL_FLAVOUR=generic
+MACHINE=x86_64
+BOOT_FIRMWARE=uefi
+
+=== NVIDIA GPUs ===
+GPU_PCI=0000:02:00.0 GPU_DEVICE=0x2684 GPU_DRIVER=nvidia GPU_STATUS=SUPPORTED (AD102)
+    VGA compatible controller: NVIDIA Corporation AD102 [GeForce RTX 4090] (rev a1)
+GPU_PCI=0000:83:00.0 GPU_DEVICE=0x2684 GPU_DRIVER=nvidia GPU_STATUS=SUPPORTED (AD102)
+    VGA compatible controller: NVIDIA Corporation AD102 [GeForce RTX 4090] (rev a1)
+SUPPORTED_GPU_COUNT=2
+UNSUPPORTED_GPU_COUNT=0
+
+=== NVIDIA driver ===
+nvidia-smi: /usr/bin/nvidia-smi NVIDIA-SMI version : 595.91.07
+NVRM version: NVIDIA UNIX x86_64 Kernel Module  595.91.07  Wed Jul 29 02:50:21 UTC 2026
+GCC version:  gcc version 15.2.0 (Ubuntu 15.2.0-16ubuntu1)
+loaded: nvidia_uvm nvidia_drm nvidia_modeset nvidia
+A loaded driver is expected: gpu_unlock runs from the initramfs, before
+nvidia binds the card.
