@@ -69,3 +69,48 @@ kernel 7.0.0-31-generic: headers present
 nvidia/580.173.02: added
 nvidia/595.91.07, 7.0.0-30-generic, x86_64: installed
 nvidia/595.91.07, 7.0.0-31-generic, x86_64: installed
+
+=== boot configuration ===
+CMDLINE=BOOT_IMAGE=/boot/vmlinuz-7.0.0-31-generic root=UUID=cd183d6a-b041-481a-ace2-865569209c99 ro quiet splash crashkernel=2G-4G:320M,4G-32G:512M,32G-64G:1024M,64G-128G:2048M,128G-:4096M
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash"
+SECURE_BOOT=SecureBoot disabled
+Platform is in Setup Mode
+INITRAMFS_GENERATORS= initramfs-tools
+
+=== disk space ===
+文件系统        容量  已用  可用 已用% 挂载点
+/dev/nvme0n1p2  1.8T  1.1T  613G  65% /
+
+=== gpu-unlock packages already installed ===
+none
+
+=== installed packages, read by fetch_bundle.sh to skip them ===
+INSTALLED: 3cpio 0.14.0-1ubuntu1 amd64
+INSTALLED: accountsservice 23.13.9-0ubuntu5.2 amd64
+INSTALLED: acl 2.3.2-2 amd64
+INSTALLED: adduser 3.153ubuntu1 all
+INSTALLED: adwaita-icon-theme 50.0-1 all
+INSTALLED: alsa-base 1.0.25+dfsg-0ubuntu9 all
+INSTALLED: alsa-topology-conf 1.2.5.1-3build1 all
+INSTALLED: alsa-ucm-conf 1.2.15.3-1ubuntu1.5 all
+INSTALLED: alsa-utils 1.2.15.2-1ubuntu1 amd64
+INSTALLED: amd64-microcode 3.20251202.1ubuntu2 amd64
+INSTALLED: anacron 2.3-45ubuntu1 amd64
+INSTALLED: apparmor 5.0.2-0ubuntu1-26.04.1 amd64
+INSTALLED: apport 2.34.1-0ubuntu0.1 all
+INSTALLED: apport-core-dump-handler 2.34.1-0ubuntu0.1 all
+INSTALLED: apport-gtk 2.34.1-0ubuntu0.1 all
+INSTALLED: apport-symptoms 0.25build1 all
+INSTALLED: appstream 1.1.2-1 amd64
+INSTALLED: apt 3.2.0 amd64
+INSTALLED: apt-config-icons 1.1.2-1 all
+INSTALLED: apt-config-icons-hidpi 1.1.2-1 all
+INSTALLED: apt-utils 3.2.0 amd64
+INSTALLED: aptdaemon 2.0.2build1 all
+INSTALLED: aptdaemon-data 2.0.2build1 all
+INSTALLED: aspell 0.60.8-2 amd64
+INSTALLED: aspell-en 2020.12.07-0-1.1build1 all
+INSTALLED: at 3.2.5-2.2ubuntu2 amd64
+INSTALLED: at-spi2-common 2.60.4-0ubuntu1 all
+INSTALLED: at-spi2-core 2.60.4-0ubuntu0.1 amd64
+INSTALLED: autoconf 2.72-3ubuntu2 all
