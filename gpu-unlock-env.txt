@@ -295,3 +295,34 @@ INSTALLED: gir1.2-gdkpixbuf-2.0 2.44.5+dfsg-4ubuntu1 amd64
 INSTALLED: gir1.2-gdm-1.0 50.1-0ubuntu0.1 amd64
 INSTALLED: gir1.2-geoclue-2.0 2.7.2-2ubuntu3 amd64
 INSTALLED: gir1.2-girepository-3.0 2.88.0-1 amd64
+
+INSTALLED: xdg-user-dirs-gtk 0.16-1 amd64
+INSTALLED: xdg-utils 1.2.1-2ubuntu2 all
+INSTALLED: xfonts-base 1:1.0.5+nmu1build1 all
+INSTALLED: xfonts-encodings 1:1.0.5-0ubuntu3 all
+INSTALLED: xfonts-utils 1:7.7+7build1 amd64
+INSTALLED: xkb-data 2.46-2 all
+INSTALLED: xml-core 0.19build1 all
+INSTALLED: xserver-common 2:21.1.22-1ubuntu1 all
+INSTALLED: xserver-xorg-core 2:21.1.22-1ubuntu1 amd64
+INSTALLED: xserver-xorg-video-nvidia-580 580.173.02-0ubuntu0.26.04.1 amd64
+INSTALLED: xwayland 2:24.1.10-1 amd64
+INSTALLED: xxd 2:9.1.2141-1ubuntu4.8 amd64
+INSTALLED: xz-utils 5.8.3-1 amd64
+INSTALLED: yaru-theme-gnome-shell 26.04.5.1ubuntu all
+INSTALLED: yaru-theme-gtk 26.04.5.1ubuntu all
+INSTALLED: yaru-theme-icon 26.04.5.1ubuntu all
+INSTALLED: yaru-theme-sound 26.04.5.1ubuntu all
+INSTALLED: yelp 49.0-5ubuntu0.1 amd64
+INSTALLED: yelp-xsl 49.0-2 all
+INSTALLED: zenity 4.2.1-1 amd64
+INSTALLED: zenity-common 4.2.1-1 all
+INSTALLED: zip 3.0-15ubuntu3 amd64
+INSTALLED: zlib1g 1:1.3.dfsg+really1.3.1-1ubuntu3.1 amd64
+INSTALLED: zstd 1.5.7+dfsg-3 amd64
+
+=== verdict ===
+OK: 2 supported GPU(s), worth building the bundle.
+OK: ubuntu is a dpkg distribution.
+OK: amd64, matches the pinned NVIDIA x86_64 installer.
+OK: headers for the running kernel are present.

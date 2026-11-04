@@ -60,6 +60,13 @@ FIELDS = ("Package", "Version", "Architecture", "Depends", "Pre-Depends",
           "Provides", "Breaks", "Conflicts", "Filename", "Size", "SHA256",
           "Multi-Arch")
 UA = "gpu-unlock-offline/1.0"
+# Essential packages, spread over the alphabet. dpkg will not let an installed
+# system lose one, so a report whose INSTALLED list lacks any of them was
+# copied incompletely: the missing middle would make this resolver treat
+# core packages as absent and ship them as unwanted upgrades.
+SENTINELS = ("grep", "gzip", "hostname", "init-system-helpers", "login",
+             "mount", "ncurses-base", "ncurses-bin", "perl-base", "sed",
+             "sysvinit-utils", "tar", "util-linux", "zlib1g")
 
 
 def die(message: str) -> "NoReturn":  # noqa: F821
@@ -484,6 +491,13 @@ def main() -> None:
             f"INSTALLED list is incomplete. Copy the whole check_env.sh "
             f"output, or complete the list, before resolving: with a "
             f"truncated list this would ship core packages the target "
+            f"already has.")
+    holes = [s for s in SENTINELS if s not in report["INSTALLED"]]
+    if holes:
+        die(f"{args.report.name} is missing essential packages from its "
+            f"INSTALLED list ({' '.join(holes)}), so the list has holes. "
+            f"Complete those lines, or rerun check_env.sh and copy the whole "
+            f"output: with holes this would ship core packages the target "
             f"already has.")
     distro = report["DISTRO_ID"]
     if distro not in MIRRORS:
