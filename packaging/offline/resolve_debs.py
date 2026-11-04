@@ -381,6 +381,12 @@ class Resolver:
             if chosen is not None and \
                     (not relation or satisfies(chosen["Version"], relation, version)):
                 continue
+            # An unversioned want that the target already has is present by
+            # definition; shipping it would only upgrade it, which an offline
+            # machine never asked for. A versioned want still has to match.
+            if not relation and not self.keep_installed and \
+                    name in self.installed:
+                continue
             package = self.candidate(name, relation, version)
             if package is None:
                 # A virtual name, dh-sequence-dkms for instance: take a provider.
