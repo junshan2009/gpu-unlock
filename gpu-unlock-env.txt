@@ -30,3 +30,42 @@ GCC version:  gcc version 15.2.0 (Ubuntu 15.2.0-16ubuntu1)
 loaded: nvidia_uvm nvidia_drm nvidia_modeset nvidia
 A loaded driver is expected: gpu_unlock runs from the initramfs, before
 nvidia binds the card.
+
+=== build and install toolchain ===
+make: /usr/bin/make GNU Make 4.4.1
+gcc: /usr/bin/gcc gcc (Ubuntu 15.2.0-16ubuntu1) 15.2.0
+ld: /usr/bin/ld GNU ld (GNU Binutils for Ubuntu) 2.46
+dpkg: /usr/bin/dpkg Debian dpkg 软件包管理程序 1.23.7 (amd64) 版。
+dpkg-deb: /usr/bin/dpkg-deb Debian dpkg-deb 软件包后端打包程序 1.23.7 (amd64) 版。
+dpkg-buildpackage: /usr/bin/dpkg-buildpackage Debian dpkg-buildpackage 版本 1.23.7。
+dh: MISSING
+dkms: /usr/sbin/dkms dkms-3.2.2
+python3: /home/node1/conda/bin/python3 Python 3.13.13
+zstd: /home/node1/conda/bin/zstd *** Zstandard CLI (64-bit) v1.5.7, by Yann Collet ***
+xz: /usr/bin/xz xz (XZ Utils) 5.8.3
+tar: /usr/bin/tar tar (GNU tar) 1.35
+git: /usr/bin/git git version 2.53.0
+lspci: /usr/bin/lspci lspci version 3.14.0
+update-initramfs: /usr/sbin/update-initramfs
+update-grub: /usr/sbin/update-grub
+grub-mkconfig: /usr/sbin/grub-mkconfig
+dracut: MISSING
+mkinitcpio: MISSING
+mokutil: /usr/bin/mokutil
+
+=== kernel headers, dkms needs them for the running kernel ===
+/lib/modules/7.0.0-31-generic/build -> /usr/src/linux-headers-7.0.0-31-generic
+kernel 6.17.0-14-generic: headers missing
+kernel 7.0.0-28-generic: headers missing
+kernel 7.0.0-29-generic: headers missing
+kernel 7.0.0-30-generic: headers missing
+kernel 7.0.0-31-generic: headers present
+/usr/src/linux-headers-7.0.0-30
+/usr/src/linux-headers-7.0.0-30-generic
+/usr/src/linux-headers-7.0.0-31
+/usr/src/linux-headers-7.0.0-31-generic
+
+=== dkms ===
+nvidia/580.173.02: added
+nvidia/595.91.07, 7.0.0-30-generic, x86_64: installed
+nvidia/595.91.07, 7.0.0-31-generic, x86_64: installed
