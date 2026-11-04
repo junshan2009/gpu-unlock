@@ -143,7 +143,10 @@ def satisfies(have: str, relation: str, want: str) -> bool:
 def read_report(path: Path) -> dict:
     keys: dict[str, str] = {}
     installed: dict[str, str] = {}
+    verdict = False
     for line in path.read_text(errors="replace").splitlines():
+        if line.strip() == "=== verdict ===":
+            verdict = True
         if line.startswith("INSTALLED: "):
             fields = line.split()
             if len(fields) >= 3:
@@ -155,6 +158,11 @@ def read_report(path: Path) -> dict:
         if not keys.get(key) or keys[key] == "unknown":
             die(f"{path.name} has no usable {key}; rerun check_env.sh on the target")
     keys["INSTALLED"] = installed
+    # check_env.sh writes the verdict section last, after the INSTALLED list.
+    # Without it the list is truncated, and treating a truncated list as the
+    # truth would ship core packages (libc6, systemd, udev) the target already
+    # has, as upgrades it never asked for.
+    keys["TRUNCATED"] = "0" if verdict else "1"
     return keys
 
 
@@ -471,6 +479,12 @@ def main() -> None:
     args = parser.parse_args()
 
     report = read_report(args.report)
+    if report["TRUNCATED"] == "1":
+        die(f"{args.report.name} has no '=== verdict ===' section, so its "
+            f"INSTALLED list is incomplete. Copy the whole check_env.sh "
+            f"output, or complete the list, before resolving: with a "
+            f"truncated list this would ship core packages the target "
+            f"already has.")
     distro = report["DISTRO_ID"]
     if distro not in MIRRORS:
         for alias in report.get("DISTRO_ID_LIKE", "").split():
